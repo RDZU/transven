@@ -1,0 +1,13 @@
+PROPUESTA DE SISTEMAS DE INFORMACION
+TRANSVEN es una empresa ubicada en la ciudad de Barcelona,  cuenta con una cantidad importante de gandolas
+ para el transporte de materiales diversos. De la misma forma como tiene estos vehículos tiene estacionamientos
+ en varias ciudades 	 del país, con la finalidad de estar preparado para atender las solicitudes de las
+ empresas, TRANSVEN requiere de un Sistema  capaz de registrar la información de vehículos, choferes,
+ estacionamientos y solicitudes de clientes con su respectivo tarifa para el transporte.  De los vehículos
+ se debe mantener un control riguroso del kilometraje con la finalidad de hacer los mantenimientos respectivos
+ a las unidades, en cuanto a los choferes dependiendo de la ruta del servicio se debe conocer el tiempo
+ necesario para hacerlo, ya que de éste se debe establecer los viáticos respectivos  que incluyen alimentación,
+ hospedaje y gastos de combustible; además a estos se les paga por viaje, y el monto que se le paga está
+ establecido por  el kilometraje recorrido.
+
+El sistema debe generar, consultas, estadísticas y reportes, asociadas con todas las actividades realizadas en la empresa
