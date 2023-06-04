@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpSolicitud" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2d825a6d-bb73-4bfe-9d96-37c1e64b2d90">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Numero_solicitud" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     solicitud.`numero_solicitud` AS solicitud_numero_solicitud,
+     solicitud.`cedula_cliente` AS solicitud_cedula_cliente,
+     solicitud.`cargamento` AS solicitud_cargamento,
+     solicitud.`carga` AS solicitud_carga,
+     solicitud.`precio` AS solicitud_precio,
+     solicitud.`destino` AS solicitud_destino,
+     solicitud.`fecha_envio` AS solicitud_fecha_envio,
+     solicitud.`fecha_entrega` AS solicitud_fecha_entrega,
+     cliente.`cedula_cliente` AS cliente_cedula_cliente,
+     concat(cliente.`nombre`,' ',
+     cliente.`apellido`) AS cliente,
+     cliente.`direccion` AS cliente_direccion,
+     cliente.`telefono` AS cliente_telefono
+FROM
+     `cliente` cliente INNER JOIN `solicitud` solicitud ON cliente.`cedula_cliente` = solicitud.`cedula_cliente`
+
+where solicitud.`numero_solicitud`=$P{Numero_solicitud}]]>
+	</queryString>
+	<field name="solicitud_numero_solicitud" class="java.lang.Long"/>
+	<field name="solicitud_cedula_cliente" class="java.lang.Long"/>
+	<field name="solicitud_cargamento" class="java.lang.String"/>
+	<field name="solicitud_carga" class="java.lang.Long"/>
+	<field name="solicitud_precio" class="java.math.BigDecimal"/>
+	<field name="solicitud_destino" class="java.lang.String"/>
+	<field name="solicitud_fecha_envio" class="java.sql.Timestamp"/>
+	<field name="solicitud_fecha_entrega" class="java.sql.Timestamp"/>
+	<field name="cliente_cedula_cliente" class="java.lang.Long"/>
+	<field name="cliente" class="java.lang.String"/>
+	<field name="cliente_direccion" class="java.lang.String"/>
+	<field name="cliente_telefono" class="java.lang.String"/>
+	<variable name="solicitud_numero_solicitud_1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{solicitud_numero_solicitud}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="162" splitType="Stretch">
+			<staticText>
+				<reportElement x="163" y="66" width="100" height="20" uuid="f283b3c2-5933-41c9-bd2e-2c731fa2b8d7"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[J-34184212-7]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="86" width="131" height="20" uuid="59bf3872-3991-40f2-865c-ad179c15782f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefono: 0416-3858068]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="66" width="46" height="20" uuid="9763c153-d674-4622-b1ad-2b5fbb2954b0"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[N# Orden:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="440" y="66" width="100" height="20" forecolor="#FF0000" uuid="856167eb-62f5-4c9e-a1ef-559b61384504"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_numero_solicitud}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="44" y="38" width="116" height="86" uuid="f4c4ce22-c549-462f-9962-c10515b0600c"/>
+				<imageExpression><![CDATA["src\\Reportes\\Transvenlogo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="106" splitType="Stretch">
+			<rectangle>
+				<reportElement x="52" y="0" width="488" height="78" uuid="f6452d54-0b4b-4f85-901d-1f2436e299fc"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="63" y="0" width="49" height="20" uuid="bfbfd610-7f29-4a20-ae14-527f24487dbd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="20" width="60" height="20" uuid="5ca21bdc-9e10-41d6-8fee-aa6b43da407f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Direccion:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="40" width="60" height="20" uuid="03450351-6578-4574-809a-120a6c8d2530"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Telefono:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="0" width="48" height="20" uuid="642cc5cb-3b2e-4536-a0e0-fa9946c58b27"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Destino:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="117" y="0" width="100" height="20" forecolor="#333333" uuid="6731b16a-8ba6-4a8c-8539-6c29b43b0f05"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="20" width="100" height="20" forecolor="#333333" uuid="988b22ae-6673-4d5b-8084-46ffa4ec806d"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente_direccion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="40" width="100" height="20" forecolor="#333333" uuid="db2cb2ff-810f-4194-aa24-47ca4f88d41f"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente_telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="362" y="0" width="178" height="70" forecolor="#333333" uuid="da641572-9c39-4a0c-85ee-61403c11f249"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_destino}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="45" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="46" y="20" width="494" height="20" uuid="b7ce2971-ef8d-41fe-a1d6-595209d8d9f7"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="63" y="20" width="116" height="20" uuid="55f4b769-6c9e-4a39-8b66-7e720e5365e8"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Detalle de la carga]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="20" width="100" height="20" uuid="cfc40ace-1a58-44ae-98e9-66ecb731d62c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso (Kg)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="440" y="20" width="100" height="20" uuid="09b3ebe1-8953-4940-bedf-7766a5df7a9d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="314" y="20" width="46" height="20" uuid="ca952c3a-2e3c-46a3-9b7b-f16607316710"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="63" y="0" width="100" height="20" uuid="c0902384-61ab-4b4a-97b7-542eebc08f1b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_cargamento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="179" y="0" width="100" height="20" uuid="66285ea5-99cf-4ed7-819e-8697e355c082"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_carga}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="440" y="0" width="100" height="20" forecolor="#FF0000" uuid="ef10c655-0a43-41cb-8ed7-a08ef5a8ce9e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_precio}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="314" y="0" width="114" height="20" uuid="2c475b03-bd20-4c65-9f0e-131a18cc6897"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solicitud_fecha_envio}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="8" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement x="44" y="2" width="496" height="39" uuid="067e78d4-c934-4c6e-b465-0ffc1c14447d"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[Durante la tramitación del pedido, te ofreceremos las opciones de envío disponibles y una fecha de entrega garantizada o estimada, dependiendo de tu código postal.En caso de reclamo por favor comuniquese, con nosotros.Gracias por usar nuestros servicios.]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="9" splitType="Stretch"/>
+	</summary>
+</jasperReport>

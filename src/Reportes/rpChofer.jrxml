@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpChofer" language="groovy" pageWidth="612" pageHeight="792" columnWidth="472" leftMargin="70" rightMargin="70" topMargin="113" bottomMargin="85" uuid="82fcb0b8-0615-417d-9b8a-71fae3573728">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     chofer.`cedula_chofer` AS chofer_cedula_chofer,
+     concat(chofer.`nombre`," ",
+     chofer.`apellido`) AS chofer,
+
+
+     chofer.`Num_viajes` AS chofer_Num_viajes,
+     chofer.`Km_recorrido` AS chofer_Km_recorrido,
+     chofer.`dia_viaje` AS chofer_dia_viaje,
+     chofer.`viatico` AS chofer_viatico,
+     chofer.`pago` AS chofer_pago
+FROM
+     `chofer` chofer]]>
+	</queryString>
+	<field name="chofer_cedula_chofer" class="java.lang.Long"/>
+	<field name="chofer" class="java.lang.String"/>
+	<field name="chofer_Num_viajes" class="java.lang.Long"/>
+	<field name="chofer_Km_recorrido" class="java.math.BigDecimal"/>
+	<field name="chofer_dia_viaje" class="java.lang.Long"/>
+	<field name="chofer_viatico" class="java.math.BigDecimal"/>
+	<field name="chofer_pago" class="java.math.BigDecimal"/>
+	<variable name="chofer_dia_viaje_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{chofer_dia_viaje}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<rectangle>
+				<reportElement mode="Opaque" x="0" y="0" width="442" height="79" forecolor="#FFFFFF" backcolor="#FF3333" uuid="2fd5f0fd-f12a-411d-89da-4acc70f0f13e"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="52" y="19" width="132" height="36" forecolor="#FFFFFF" uuid="b9198271-acae-4926-b999-16a85a694366"/>
+				<textElement>
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[Choferes]]></text>
+			</staticText>
+			<textField pattern="MMM">
+				<reportElement x="265" y="35" width="140" height="20" forecolor="#FFFFFF" uuid="3a5defd8-b1db-4a83-8e4d-84fc7197be90"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="230" y="35" width="35" height="20" forecolor="#FFFFFF" uuid="6a7ceeca-ad24-4c3f-bee5-de2f60c94f20"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mes:]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="24" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="41" width="52" height="20" uuid="e9fc2f12-5c73-494d-89b6-06c456508549"/>
+				<text><![CDATA[Cedula]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="52" y="41" width="87" height="20" uuid="5640f157-f535-4ac3-a3ee-488a32b54967"/>
+				<text><![CDATA[Chofer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="139" y="41" width="46" height="20" uuid="7dd99192-8541-426f-bab1-26bb41ed96c7"/>
+				<text><![CDATA[N# Viajes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="191" y="41" width="74" height="20" uuid="981e658e-9720-4901-8c65-0e82130c9e29"/>
+				<text><![CDATA[Km Recorrido]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="265" y="41" width="73" height="20" uuid="1a999ed0-0611-4828-8330-813d0d15830f"/>
+				<text><![CDATA[Dia de Viaticos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="338" y="41" width="48" height="20" uuid="e6173f9b-418e-470e-9d1d-063d48fd0620"/>
+				<text><![CDATA[Viatico]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="41" width="57" height="20" uuid="e17db538-f8a0-472d-8899-c81f139f3a61"/>
+				<text><![CDATA[Pago]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="52" height="20" uuid="4719cae3-4b5e-48eb-8e76-808f3104554e"/>
+				<textFieldExpression><![CDATA[$F{chofer_cedula_chofer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="52" y="0" width="87" height="20" uuid="bbdeeef1-dba1-483c-8aed-4e6fe7f2d7ac"/>
+				<textFieldExpression><![CDATA[$F{chofer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="0" width="46" height="20" uuid="ccbc811f-442f-4a09-9a8b-16730289cb9e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{chofer_Num_viajes}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="191" y="0" width="74" height="20" uuid="72047e67-03bf-4122-82a7-e1a30df3f07c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{chofer_Km_recorrido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="0" width="59" height="20" uuid="42ecc58e-8c3a-450b-9eb2-cb62da46a805"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{chofer_dia_viaje}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="343" y="0" width="62" height="20" uuid="4cc3e229-ba65-481a-bf2c-6e8a80dc0c0c"/>
+				<textFieldExpression><![CDATA[$F{chofer_viatico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="0" width="43" height="20" uuid="d3fddc70-4c3c-4944-a843-bd5326cb87ed"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{chofer_pago}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="338" y="32" width="80" height="20" uuid="09d3b0bc-870d-4830-9197-2eefa4078e1f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="418" y="32" width="40" height="20" uuid="58e3cedb-7adc-4c1f-ac2e-3fb2d98c8cc6"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

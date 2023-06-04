@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ejemplo" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d37afad9-38a2-48c2-a413-a636930d314b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="55"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select sum(precio) as Precio,Date_Format(fecha_envio,'%c') NMES,Date_Format(fecha_envio,'%M') MES
+from solicitud
+group by  MES
+order by NMES asc;]]>
+	</queryString>
+	<field name="Precio" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NMES" class="java.lang.String"/>
+	<field name="MES" class="java.lang.String"/>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="244" y="22" width="236" height="39" forecolor="#FF0000" uuid="5540e6a9-4055-47a5-8192-944d56524ab6"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ingresos por meses]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="592" y="41" width="111" height="20" forecolor="#FF0000" uuid="f97b8663-c68d-459c-8ac5-8dbc09bda14e"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<summary>
+		<band height="383">
+			<bar3DChart>
+				<chart>
+					<reportElement x="0" y="0" width="752" height="383" uuid="95de117a-a275-47a2-9a3d-f15dfbe52cab"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{MES}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{MES}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{Precio}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<bar3DPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</bar3DPlot>
+			</bar3DChart>
+			<staticText>
+				<reportElement x="18" y="0" width="16" height="20" uuid="b1566b97-faef-406c-8cb7-6a0b5f61490f"/>
+				<text><![CDATA[Bs]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
