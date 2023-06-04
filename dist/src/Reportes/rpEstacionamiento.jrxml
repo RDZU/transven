@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpEstacionamiento" language="groovy" pageWidth="595" pageHeight="842" columnWidth="425" leftMargin="85" rightMargin="85" topMargin="113" bottomMargin="85" uuid="48055802-8116-45d8-8a95-7732d25692fc">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     estacionamiento.`idEstacionamiento` AS estacionamiento_idEstacionamiento,
+     estacionamiento.`ciudad` AS estacionamiento_ciudad
+FROM
+     `estacionamiento` estacionamiento]]>
+	</queryString>
+	<field name="estacionamiento_idEstacionamiento" class="java.lang.Integer"/>
+	<field name="estacionamiento_ciudad" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="92" splitType="Stretch">
+			<staticText>
+				<reportElement x="174" y="33" width="209" height="40" forecolor="#003399" uuid="beb68559-2cc1-47ab-84ea-584d1ad6f93a"/>
+				<textElement textAlignment="Center">
+					<font size="24" isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Estacionamientos]]></text>
+			</staticText>
+			<image>
+				<reportElement x="26" y="6" width="116" height="86" uuid="9f359eea-b9ef-47a0-bd36-ad0ac6e803c6"/>
+				<imageExpression><![CDATA["src\\Reportes\\Transvenlogo.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="41" width="423" height="20" forecolor="#009999" uuid="893bb0e5-c9db-4145-940b-a8dc241efcad"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="41" width="120" height="20" forecolor="#003399" uuid="8a678088-6149-4b6e-bde5-506e0d908bf2"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ID Estacionamiento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="41" width="100" height="20" forecolor="#003399" uuid="3cab6a1d-219c-48c6-9f1b-c9bc0bec7341"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ubicacion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="85" height="20" uuid="6c770cc5-db79-41da-8fa0-79d02298fac4"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estacionamiento_idEstacionamiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="179" y="0" width="100" height="20" uuid="3891e778-3b4e-4733-bee8-d0ea560acd0b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{estacionamiento_ciudad}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="175" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="0" y="34" width="100" height="20" forecolor="#FF0000" uuid="34457c78-aa33-48b8-8b86-79cb30aabdba"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="34" width="80" height="20" uuid="47403776-780a-44bf-bbd2-50428065822f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="383" y="34" width="40" height="20" uuid="c39bd3f4-d71e-460c-9ea6-76744f5126b0"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

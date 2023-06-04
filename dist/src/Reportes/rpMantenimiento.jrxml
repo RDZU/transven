@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rpMantenimiento" language="groovy" pageWidth="612" pageHeight="792" columnWidth="442" leftMargin="85" rightMargin="85" topMargin="113" bottomMargin="85" uuid="b9fa51af-1658-4428-a925-4378abb9f60c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="53"/>
+	<subDataset name="dataset1" uuid="5733b531-a6ca-40b5-9abe-becf56d9446f"/>
+	<parameter name="Placa" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     mantenimiento.`idMantenimiento` AS mantenimiento_idMantenimiento,
+     mantenimiento.`fecha` AS mantenimiento_fecha,
+     mantenimiento.`descripcion` AS mantenimiento_descripcion,
+     mantenimiento.`repuesto` AS mantenimiento_repuesto,
+     mantenimiento.`placa` AS mantenimiento_placa,
+     vehiculo.`placa` AS vehiculo_placa,
+     vehiculo.`modelo` AS vehiculo_modelo,
+     vehiculo.`estado` AS vehiculo_estado,
+     vehiculo.`kilometraje` AS vehiculo_kilometraje,
+     vehiculo.`capacidad` AS vehiculo_capacidad
+FROM
+     `vehiculo` vehiculo INNER JOIN `mantenimiento` mantenimiento ON vehiculo.`placa` = mantenimiento.`placa`
+where vehiculo.`placa`=$P{Placa}]]>
+	</queryString>
+	<field name="mantenimiento_idMantenimiento" class="java.lang.Integer"/>
+	<field name="mantenimiento_fecha" class="java.sql.Date"/>
+	<field name="mantenimiento_descripcion" class="java.lang.String"/>
+	<field name="mantenimiento_repuesto" class="java.lang.String"/>
+	<field name="mantenimiento_placa" class="java.lang.String"/>
+	<field name="vehiculo_placa" class="java.lang.String"/>
+	<field name="vehiculo_modelo" class="java.lang.String"/>
+	<field name="vehiculo_estado" class="java.lang.String"/>
+	<field name="vehiculo_kilometraje" class="java.math.BigDecimal"/>
+	<field name="vehiculo_capacidad" class="java.lang.Long"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="-20" width="442" height="76" backcolor="#006699" uuid="342da10a-1def-465b-9eaa-f0c65a566d24"/>
+				<staticText>
+					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="64ce6c52-b8c2-4489-939e-63c5edd5382e"/>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Historial de Mantenimiento]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="309" y="30" width="100" height="20" forecolor="#FFFFFF" uuid="980a9938-b6dd-40e9-bcf0-afeba19a21a9"/>
+					<textElement>
+						<font size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{vehiculo_placa}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="52">
+			<rectangle>
+				<reportElement x="0" y="0" width="442" height="25" uuid="17ec0d77-fd5b-4e33-85d8-501a13c4f1b0"/>
+			</rectangle>
+			<textField>
+				<reportElement x="78" y="0" width="125" height="20" forecolor="#0066FF" uuid="bf71e9b1-6520-49f9-9913-8328606c2a49"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehiculo_modelo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="0" width="100" height="20" forecolor="#0066CC" uuid="6ffed905-51b0-4a4b-8b65-054fceb7e899"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{vehiculo_kilometraje}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="289" y="0" width="31" height="20" uuid="48966128-b00b-4652-af48-db5aefd73c2f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Km:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="0" width="47" height="20" uuid="2a9bb6f4-a97f-4d07-bd2d-dc469472fd49"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Modelo:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="27">
+			<rectangle radius="10">
+				<reportElement x="-10" y="7" width="463" height="20" forecolor="#009999" uuid="9cde987e-feb7-4227-9fc2-38dc17e8fd4a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="0" y="7" width="134" height="20" uuid="0246b83d-a6c8-4231-8ea8-967331167bdd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nombre del repuesto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="134" y="7" width="100" height="20" uuid="9b1f595f-46e8-4ba2-a0cf-3902f8f4c844"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripcion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="325" y="7" width="100" height="20" uuid="f0b0533e-57d8-4388-9e27-51850431b73c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="35">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="442" height="1" forecolor="#006699" uuid="e4c33980-bb0f-4700-ae75-6e7a3832d8ed"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20" uuid="a0aab194-e0f7-4a42-ba06-f9868c8aa9d5"/>
+				<textFieldExpression><![CDATA[$F{mantenimiento_repuesto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="134" y="0" width="191" height="20" uuid="64dbccd8-04e9-4378-8855-ba51ae48c587"/>
+				<textFieldExpression><![CDATA[$F{mantenimiento_descripcion}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="325" y="0" width="100" height="20" uuid="669d72a7-0494-407e-8f9f-d871f2030e5e"/>
+				<textFieldExpression><![CDATA[$F{mantenimiento_fecha}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="44">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="380" height="13" backcolor="#E6E6E6" uuid="d3aa9b20-ec6f-4ebb-9575-5f93c5199a11"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pagina "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="380" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="7b25080a-628c-4a35-8307-2138fe454613"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="813aa8ec-9c76-4eef-bbba-271f34471b88"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

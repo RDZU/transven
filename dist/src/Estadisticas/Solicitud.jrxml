@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Solicitud" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2a3d3f20-bb51-4165-be11-6dce594325bb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select count(numero_solicitud) solicitud ,Date_Format(fecha_envio,'%M') MES,
+Date_Format(fecha_envio,'%c') NMES
+from solicitud
+group by NMES;]]>
+	</queryString>
+	<field name="solicitud" class="java.lang.Long"/>
+	<field name="MES" class="java.lang.String"/>
+	<field name="NMES" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="50">
+			<staticText>
+				<reportElement x="262" y="14" width="227" height="20" forecolor="#CC0099" uuid="307d60b8-0606-455a-90d5-1460ade3a5e0"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Numero de solicitudes por mes ]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="612" y="14" width="114" height="20" forecolor="#990099" uuid="7997b26a-c878-4864-a2bb-706eddde1e0c"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="23">
+			<staticText>
+				<reportElement x="276" y="3" width="100" height="20" uuid="2b69d925-6114-43f5-94a3-ea16481c83e3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[N# Solicitudes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="3" width="100" height="20" uuid="2bcf1d25-b973-4809-afc8-ac87508d5961"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[MES]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement x="276" y="0" width="100" height="20" uuid="c7254ec8-d8cc-470a-bab2-1f8212ab98bb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{solicitud}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="376" y="0" width="100" height="20" uuid="4da03d2b-7ab4-4aad-991b-ab10e6023c5b"/>
+				<textFieldExpression><![CDATA[$F{MES}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="334" splitType="Stretch">
+			<pie3DChart>
+				<chart>
+					<reportElement x="0" y="0" width="752" height="334" uuid="58fb4a8a-2484-4ee4-b171-44e9c826f78a"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{MES}]]></keyExpression>
+					<valueExpression><![CDATA[$F{solicitud}]]></valueExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>
