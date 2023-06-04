@@ -1,0 +1,10 @@
+COMO GERENTE
+
+Login:Randy  Contraseña:o7117649
+Login:manuel Contraseña:manuel
+
+
+COMO EMPLEADO
+
+Login:andrea  Contraseña:andrea123
+Login:frede  Contraseña:frede123
